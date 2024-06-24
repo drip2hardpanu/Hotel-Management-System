@@ -74,6 +74,8 @@ bool insertRehashCheck() {
         Room W(i);
         Broadview.insert(W);
     }
+    
+    Room Z(101);
 
     assert(Broadview.rehashCount == 0);
     
@@ -85,6 +87,36 @@ bool insertRehashCheck() {
     return true;
 }
 
+bool getStatusCheck() {
+    Hotel Broadview("broadview");
+
+    Room Q(101);
+    Broadview.insert(Q);
+
+    forward_list<Room>
+
+    cout << Broadview.getData()[Broadview.hash(Q)].begin() << endl;
+
+    assert(Broadview.getStatus(101) == CLEAN);
+
+    return true;
+}
+
+bool findOpenCheck() {
+    Hotel Broadview("broadview");
+  //  cout << Broadview.capacity_ << endl;
+
+    Room Q(101);
+    Broadview.insert(Q);
+
+//    cout << Broadview.findOpen() << endl;
+
+    cout << Broadview.findOpen().number_ << endl;
+    //cout << Broadview.checkFull() << endl;
+    assert(Broadview.findOpen().number_ == 101);
+
+    return true;
+}
 
 int main() {
     emptyHotel();
@@ -96,6 +128,9 @@ int main() {
     loadfactorCheck02();
 
     insertRehashCheck();
+
+    getStatusCheck();
+    findOpenCheck();
 
     return 1;
 }

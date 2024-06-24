@@ -27,6 +27,7 @@ class Hotel {
 
     public:
         size_t capacity_; //capacity of the hotel 
+        size_t occupied_ = 0;
         size_t buckets_ = DEFAULT_ROOMS; //buckets for the hash table
 
         //testing variables
@@ -67,6 +68,12 @@ class Hotel {
         bool exists(const Room& room) const;
 
 
+      /**
+       * \brief lookup for data_ using room number 
+      */
+        Room& lookup(size_t number) const;
+
+
         /** 
         * \brief adds a room to the data 
         * \param room to insert
@@ -82,28 +89,12 @@ class Hotel {
          * \brief rehashes data_
         */
         void rehash();
-
-
-
-
-
-
-
-
-
-
-        /**
-        * \brief checks in a customer
-        * \param room to insert
-        */
-        void checkIn();
-
         
         /**
-        * \brief adds room with just number
+        * \brief adds room with number
         * \param room to insert
         */
-        void numberAddRoom(size_t roomNum);
+        void addRoom(size_t roomNum);
 
         /**
         * \brief finds room with just number
@@ -111,15 +102,46 @@ class Hotel {
         */
        bool numberExists(size_t number) const;
 
+
+        /**
+        * \brief finds room with just number
+        * 
+        */
+       status getStatus(size_t number) const;
+
        /**
-        * hotel functions
+        * \brief returns the number of an open room 
        */
+      Room& findOpen() const;
 
 
-        //Getters
-        string getName() const;
-        size_t numOpen() const;
-        std::forward_list<Room>* getData();
+      /**
+       * \brief customer functions
+      */
+
+     /**
+      * \brief checks in customer
+      * \param cust - name of customer to check in
+     */
+      void checkIn(string cust);
+
+      /**
+       * \brief checks out room 
+       * \param num - room number to check out
+      */
+      void checkOut(size_t num);
+
+    
+      /**
+       * \brief checks if the hotel is full
+      */
+      bool checkFull() const;
+
+
+      //Getters
+      string getName() const;
+      size_t numOpen() const;
+      std::forward_list<Room>* getData();
 
 
 };

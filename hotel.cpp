@@ -73,6 +73,19 @@ void Hotel::insert(const Room& room) {
     data_[key].push_front(room);
 }
 
+Room& Hotel::lookup(size_t number) const {
+    size_t key = hash(number);
+    key = key % buckets_;
+
+    forward_list<Room> toCheck = data_[key];
+
+    for (auto i = toCheck.begin(); i != toCheck.end(); ++i) {
+        Room& rtc = *i;
+        if (rtc.number_ == number)
+            return rtc;
+    }
+}
+
 double Hotel::loadFactor() const {
     double forReturn = (double)capacity_/buckets_;
     return forReturn;
@@ -103,13 +116,64 @@ void Hotel::rehash() {
     ++rehashCount;
 }
 
+void Hotel::addRoom(size_t roomNum) {
+    //initializes room object
+    Room Q(roomNum);
 
-void numberAddRoom(size_t roomNum) {
+    insert(Q);
+}
+
+status Hotel::getStatus(size_t number) const {
+    //exists
+
+    //lookup
+    Room& pulled = lookup(number);
+    return pulled.status_;
+}
+bool Hotel::checkFull() const{
+    if (occupied_ == capacity_) {
+        cout << "no open rooms!" << endl;
+        return true;
+    }
+    return false;
 
 }
 
+Room& Hotel::findOpen() const {
+    assert(checkFull() == false);
+
+    for (size_t i = 0; i < buckets_; ++i) {
+        forward_list<Room> list = data_[i];
+
+        for (auto q = list.begin(); q != list.end(); ++q) {
+            
+            if ((*q).status_ == CLEAN) {
+                return (*q);
+                }
+            }
+        }
+    }
 
 std::forward_list<Room>* Hotel::getData() {
     return data_;
+}
+
+//customer functions
+void Hotel::checkIn(string cust) {
+    Room& forCheck = findOpen();
+
+    //change room
+    forCheck.status_ = OCCUPIED;
+    forCheck.changeUser(cust);
+
+    ++occupied_;
+}
+
+void Hotel::checkOut(size_t num) {
+    Room& forCheck = lookup(num);
+
+    //change room
+    forCheck.status_ = DIRTY;
+    forCheck.changeUser("");
 }
 

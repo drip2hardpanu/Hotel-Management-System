@@ -4,7 +4,7 @@
 
 OPTFLAGS =
 CXX = clang++
-CXXFLAGS = $(OPTFLAGS) -gdwarf-4 -std=c++17 -Wall -Wextra -pedantic
+CXXFLAGS = $(OPTFLAGS) -gdwarf-4 -std=c++17 -Wall -Wextra -pedantic -g
 LDFLAGS = $(CXXFLAGS)
 LDLIBS =  
 TARGETS = room-test hotel-test

@@ -19,8 +19,8 @@ class Room {
 
     public:
         size_t number_;
-        status status_;
-        size_t rate_;
+        status status_ = CLEAN;
+        size_t rate_ = 55;
         
         /**
         * \brief constructs a room
@@ -33,8 +33,16 @@ class Room {
         */
         string getUser() const;
 
+        void changeUser(string user);
+
         bool operator==(const Room& other);
+
+        std::ostream& printToStream(std::ostream& s) const;
+
 };
+
+std::ostream& operator<<(std::ostream&, const Room&);
+
 
 
 
