@@ -26,6 +26,7 @@ class Room {
         * \brief constructs a room
         */
         Room(string user = "", size_t number = 000, status status_ = CLEAN, size_t rate = 20);
+        Room(size_t number);
 
         /**
         * \brief getters
