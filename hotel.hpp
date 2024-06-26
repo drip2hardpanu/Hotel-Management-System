@@ -6,6 +6,8 @@
 #include <forward_list>
 #include <iostream>
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"     
+
 using namespace std;
 /**
  * Hotel
@@ -138,12 +140,14 @@ class Hotel {
       bool checkFull() const;
 
 
-      //Getters
+        //Getters
       string getName() const;
       size_t numOpen() const;
       std::forward_list<Room>* getData();
 
-
+      std::ostream& printToStream(std::ostream& s) const ;
 };
+
+std::ostream& operator<<(std::ostream&, const Room&);
 
 #endif

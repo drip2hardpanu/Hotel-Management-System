@@ -3,6 +3,8 @@
 
 #include <cassert>
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"     
+
 bool emptyHotel() {
     Hotel("bill");
 
@@ -19,7 +21,7 @@ bool getterCheck() {
 
 bool insertCheck() {
     Hotel Broadview("broadview");
-    Room W;
+    Room W(101);
 
     Broadview.insert(W);
 
@@ -93,10 +95,6 @@ bool getStatusCheck() {
     Room Q(101);
     Broadview.insert(Q);
 
-    forward_list<Room>
-
-    cout << Broadview.getData()[Broadview.hash(Q)].begin() << endl;
-
     assert(Broadview.getStatus(101) == CLEAN);
 
     return true;
@@ -104,12 +102,9 @@ bool getStatusCheck() {
 
 bool findOpenCheck() {
     Hotel Broadview("broadview");
-  //  cout << Broadview.capacity_ << endl;
 
     Room Q(101);
     Broadview.insert(Q);
-
-//    cout << Broadview.findOpen() << endl;
 
     cout << Broadview.findOpen().number_ << endl;
     //cout << Broadview.checkFull() << endl;

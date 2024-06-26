@@ -8,7 +8,7 @@
 using namespace std;
 
 Hotel::Hotel(string name):
-    name_{name}, capacity_{0}, openRooms_{0}, data_{new std::forward_list<Room>[DEFAULT_ROOMS]} {
+    name_{name}, openRooms_{0}, data_{new std::forward_list<Room>[DEFAULT_ROOMS]}, capacity_{0} {
     }
 
 Hotel::~Hotel() {
@@ -176,4 +176,5 @@ void Hotel::checkOut(size_t num) {
     forCheck.status_ = DIRTY;
     forCheck.changeUser("");
 }
+
 
