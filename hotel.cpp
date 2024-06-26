@@ -146,7 +146,6 @@ Room& Hotel::findOpen() const {
         forward_list<Room> list = data_[i];
 
         for (auto q = list.begin(); q != list.end(); ++q) {
-            
             if ((*q).status_ == CLEAN) {
                 return (*q);
                 }

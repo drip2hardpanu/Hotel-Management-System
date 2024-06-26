@@ -25,8 +25,6 @@ bool insertCheck() {
 
     Broadview.insert(W);
 
-    cout << Broadview << endl;
-
     assert(Broadview.capacity_ == 1);
 
     return true;
@@ -108,8 +106,8 @@ bool findOpenCheck() {
     Room Q(101);
     Broadview.insert(Q);
 
-    cout << Broadview.findOpen().number_ << endl;
-    //cout << Broadview.checkFull() << endl;
+    cout << Broadview.findOpen() << endl;
+
     assert(Broadview.findOpen().number_ == 101);
 
     return true;
