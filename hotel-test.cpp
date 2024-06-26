@@ -25,6 +25,8 @@ bool insertCheck() {
 
     Broadview.insert(W);
 
+    cout << Broadview << endl;
+
     assert(Broadview.capacity_ == 1);
 
     return true;

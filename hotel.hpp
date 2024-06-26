@@ -139,15 +139,15 @@ class Hotel {
       */
       bool checkFull() const;
 
-
-        //Getters
+    //Getters
       string getName() const;
       size_t numOpen() const;
       std::forward_list<Room>* getData();
 
+
       std::ostream& printToStream(std::ostream& s) const ;
 };
 
-std::ostream& operator<<(std::ostream&, const Room&);
+std::ostream& operator<<(std::ostream& s, const Hotel& hotel);
 
 #endif

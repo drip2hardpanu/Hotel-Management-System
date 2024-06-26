@@ -177,4 +177,28 @@ void Hotel::checkOut(size_t num) {
     forCheck.changeUser("");
 }
 
+std::ostream& Hotel::printToStream(std::ostream& s) const {
+    //iterate through buckets
+    for (size_t i = 0; i < buckets_; ++i) {
+    forward_list<Room> list = data_[i];
+
+    if (list.begin() != list.end()) {
+        cout << "bucket: " << i << endl;
+        cout << " " << endl;
+    }
+
+    for (auto q = list.begin(); q != list.end(); ++q) {
+        cout << (*q) << endl;
+        }
+
+    }
+    
+   
+    return s;
+}
+
+std::ostream& operator<<(std::ostream& s, const Hotel& hotel) {
+    hotel.printToStream(s);
+}
+
 
